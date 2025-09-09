@@ -25,40 +25,6 @@ const (
 	White  = "\033[37m"
 )
 
-func main() {
-	// Print header
-	fmt.Printf("%s=== hoi-ola System Monitor ===%s\n\n", Cyan, Reset)
-
-	// Get current time
-	currentTime := time.Now().Format("15:04:05 MST")
-
-	// Get RAM usage
-	ramUsage := getRAMUsage()
-
-	// Get CPU temperature
-	cpuTemp := getCPUTemperature()
-
-	// Get GPU temperature
-	gpuTemp := getGPUTemperature()
-
-	// Get network speed
-	networkSpeed := getNetworkSpeed()
-
-	// Display information with colors
-	fmt.Printf("%s[%s]%s\n", Purple, currentTime, Reset)
-	fmt.Printf("%sRAM Usage:%s     %.2f%%\n", Green, Reset, ramUsage)
-	fmt.Printf("%sCPU Temp:%s      %.2f°C\n", Yellow, Reset, cpuTemp)
-	
-	// Handle GPU temperature display
-	if gpuTemp >= 0 {
-		fmt.Printf("%sGPU Temp:%s      %.2f°C\n", Blue, Reset, gpuTemp)
-	} else {
-		fmt.Printf("%sGPU Temp:%s      Not available\n", Blue, Reset)
-	}
-	
-	fmt.Printf("%sNetwork:%s       RX: %s TX: %s\n", Red, Reset, networkSpeed.RX, networkSpeed.TX)
-	fmt.Println()
-}
 
 // getRAMUsage returns the RAM usage percentage
 func getRAMUsage() float64 {
@@ -262,4 +228,41 @@ func formatSpeed(speed float64) string {
 		return fmt.Sprintf("%.1f KB/s", speed)
 	}
 	return fmt.Sprintf("%.1f MB/s", speed/1024.0)
+	
+}
+
+
+func main() {
+	// Print header
+	fmt.Printf("%s=== hoi-ola System Monitor ===%s\n\n", Cyan, Reset)
+
+	// Get current time
+	currentTime := time.Now().Format("15:04:05 MST")
+
+	// Get RAM usage
+	ramUsage := getRAMUsage()
+
+	// Get CPU temperature
+	cpuTemp := getCPUTemperature()
+
+	// Get GPU temperature
+	gpuTemp := getGPUTemperature()
+
+	// Get network speed
+	networkSpeed := getNetworkSpeed()
+
+	// Display information with colors
+	fmt.Printf("%s[%s]%s\n", Purple, currentTime, Reset)
+	fmt.Printf("%sRAM Usage:%s     %.2f%%\n", Green, Reset, ramUsage)
+	fmt.Printf("%sCPU Temp:%s      %.2f°C\n", Yellow, Reset, cpuTemp)
+	
+	// Handle GPU temperature display
+	if gpuTemp >= 0 {
+		fmt.Printf("%sGPU Temp:%s      %.2f°C\n", Blue, Reset, gpuTemp)
+	} else {
+		fmt.Printf("%sGPU Temp:%s      Not available\n", Blue, Reset)
+	}
+	
+	fmt.Printf("%sNetwork:%s       RX: %s TX: %s\n", Red, Reset, networkSpeed.RX, networkSpeed.TX)
+	fmt.Println()
 }
