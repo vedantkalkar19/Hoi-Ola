@@ -65,6 +65,6 @@ GPU Temp:      62.00°C
 Network:       RX: 1.9 KB/s TX: 0.7 KB/s
 ```
 
-## License
+## Source
 
-MIT
+created using qwen cli and gemini cli
