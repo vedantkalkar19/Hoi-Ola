@@ -1,6 +1,6 @@
 # hoi-ola
 
-A simple CLI tool for monitoring system resources with colorful output.
+A simple CLI tool for monitoring system resources. 
 
 ## Features
 
